@@ -1,0 +1,76 @@
+.timeline {
+  background-image: -webkit-linear-gradient(left,white 51%,#E2E2E2 0%,#E2E2E2 51.5%,white 50%);
+  margin: 20px auto;
+  width: 80%;
+  height: 100%;
+}
+
+.timeline li {
+  background: #E2E2E2;
+  padding: 2%;
+  border-radius: 4px;
+  list-style-type: none;
+  width: 48%;
+  margin: 1em 0 4em;
+  box-sizing: border-box;
+  position: relative
+}
+
+.timeline li:nth-of-type(odd) {
+  float: left;
+  right: 15px;
+}
+
+.timeline li:nth-of-type(even) {
+  float: right;
+  margin-top: 3em;
+}
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.timeline li::before {
+color: #E2E2E2;
+content: "◀";
+position: absolute;
+left: -0.75em;
+top: 0.5em;
+z-index: 100;
+}
+
+.timeline li:nth-of-type(odd)::before {
+content: "▶";
+left: auto;
+right: -0.75em;
+}
+
+img {
+ max-width:100%;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+
+.avatar-small {
+  height: 25px;
+  vertical-align: middle;
+  float: right;
+}
+
+.status {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: lighter;
+  color: #fff;
+  padding: 5px 10px;
+}
+
+[data-status='open'] {
+  background: #2196f3;
+}
+
+[data-status='closed'] {
+  background: #e91e63;
+}
