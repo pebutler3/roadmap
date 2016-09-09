@@ -39,7 +39,7 @@ constructor(){
       </div>
     );
   }
-  getIssues(query = "mysite") {
+  getIssues(query = "roadmap") {
     let issues = `https://api.github.com/repos/pebutler3/${query}/issues?state=all`;
     axios.get(issues).then((response) => {
       this.setState({
