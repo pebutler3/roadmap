@@ -9,18 +9,29 @@ import IssuesContainer from './containers/IssuesContainer';
 class App extends Component {
     constructor(){
         super();
-        this.state = {};
+        this.state = {
+          urlState: 'all'
+        };
+    }
+
+    setUrlStateToOpen(){
+      this.setState({
+        urlState: 'open'
+      })
+    }
+
+    testFunc() {
+      console.log('made it!')
     }
 
     componentWillMount(){
         this.getIssues();
     }
+
     render() {
-
-
         let allIssues = _.map(this.state.allIssues, (issue) => {
-            /*Date format*/
-            var cts = issue.created_at,
+            // Date format
+            let cts = issue.created_at,
                 cdate = (new Date(cts)).toLocaleString();
 
             return <li key={issue.id}>
@@ -37,21 +48,29 @@ class App extends Component {
             </li>
         });
 
+        // let allIssues = {this.state.allIssues, (issue) {
+        //                   return <li>
+        //                 })}
+
         return (
             <div>
+                <button className="open" onClick={this.setUrlStateToOpen.bind(this)}>Open</button>
+                <button className="open" onClick={this.testFunc}>test</button>
                 <ol className="timeline group">
                     {allIssues}
                 </ol>
+                <h1>{this.state.urlState}</h1>
                 <IssuesContainer />
             </div>
         );
     }
-    getIssues(query = "roadmap") {
-        let issues = `https://api.github.com/repos/pebutler3/${query}/issues?state=all`;
+    getIssues(query = "roadmap", userTest='pebutler3') {
+        let issues = 'https://api.github.com/repos/' + userTest + '/' + query + '/issues?state=' + this.state.urlState;
         axios.get(issues).then((response) => {
             this.setState({
                 allIssues: response.data,
             });
+            console.log(response.data)
         });
     };
 
