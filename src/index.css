@@ -6,14 +6,21 @@ body {
 
 .filters {
   display: flex;
-  position: fixed;
-  background: #ff3;
-  top: 0;
-  flex-direction: column;
+  background: #ffeB3b;
   height: 100%;
-  width: 100px;
+  top: 0;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .filters h1 {
+  align-self: center;
   font-size: .875rem;
+}
+
+.filters button {
+  button: ghostwhite;
+  padding: .5rem 2rem;
+  margin: .25rem;
+  border: none;
 }
